@@ -1,3 +1,6 @@
+import 'dart:math';
+
+import 'package:bmi_calculator/bmi.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -9,6 +12,9 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   bool ismaleSelected = true;
+  int height = 31;
+  int weight = 20;
+  int age = 10;
 
   @override
   Widget build(BuildContext context) {
@@ -133,7 +139,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                           Center(
                             child: Text(
-                              "18",
+                              "${age}",
                               style:
                                   TextStyle(fontSize: 60, color: Colors.white),
                             ),
@@ -145,7 +151,11 @@ class _HomePageState extends State<HomePage> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               ElevatedButton(
-                                  onPressed: (() {}),
+                                  onPressed: (() {
+                                    setState(() {
+                                      age++;
+                                    });
+                                  }),
                                   style: ButtonStyle(
                                       backgroundColor:
                                           MaterialStatePropertyAll<Color>(
@@ -161,7 +171,11 @@ class _HomePageState extends State<HomePage> {
                                     color: allBoxClr,
                                   )),
                               ElevatedButton(
-                                  onPressed: (() {}),
+                                  onPressed: (() {
+                                    setState(() {
+                                      age--;
+                                    });
+                                  }),
                                   style: ButtonStyle(
                                       backgroundColor:
                                           MaterialStatePropertyAll<Color>(
@@ -204,7 +218,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                           Center(
                             child: Text(
-                              "50",
+                              "${weight}",
                               style:
                                   TextStyle(fontSize: 60, color: Colors.white),
                             ),
@@ -216,7 +230,11 @@ class _HomePageState extends State<HomePage> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               ElevatedButton(
-                                  onPressed: (() {}),
+                                  onPressed: (() {
+                                    setState(() {
+                                      weight++;
+                                    });
+                                  }),
                                   style: ButtonStyle(
                                       backgroundColor:
                                           MaterialStatePropertyAll<Color>(
@@ -232,7 +250,11 @@ class _HomePageState extends State<HomePage> {
                                     color: allBoxClr,
                                   )),
                               ElevatedButton(
-                                  onPressed: (() {}),
+                                  onPressed: (() {
+                                    setState(() {
+                                      weight--;
+                                    });
+                                  }),
                                   style: ButtonStyle(
                                       backgroundColor:
                                           MaterialStatePropertyAll<Color>(
@@ -254,11 +276,88 @@ class _HomePageState extends State<HomePage> {
                     )),
                   ],
                 )),
-            Expanded(flex: 5, child: Placeholder()),
-            Expanded(flex: 2, child: Placeholder())
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.02,
+            ),
+            Expanded(
+                flex: 5,
+                child: Container(
+                  padding: EdgeInsets.symmetric(vertical: 24),
+                  height: 200,
+                  width: 398,
+                  decoration: BoxDecoration(
+                      color: allBoxClr,
+                      borderRadius: BorderRadius.all(Radius.circular(16))),
+                  child: Column(
+                    // crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Height",
+                        style: TextStyle(color: textIconClr, fontSize: 24),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.baseline,
+                        textBaseline: TextBaseline.alphabetic,
+                        children: [
+                          Text(
+                            "${height}",
+                            style: TextStyle(fontSize: 60, color: Colors.white),
+                          ),
+                          Text(
+                            "cm",
+                            style: TextStyle(color: textIconClr, fontSize: 24),
+                          )
+                        ],
+                      ),
+                      SliderTheme(
+                          data: SliderTheme.of(context)
+                              .copyWith(thumbColor: Colors.pink),
+                          child: Slider(
+                            value: height.toDouble(),
+                            onChanged: (value) {
+                              setState(() {
+                                height = value.toInt();
+                              });
+                            },
+                            max: 300,
+                            min: 30,
+                          ))
+                    ],
+                  ),
+                )),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.015,
+            ),
+            Expanded(
+                flex: 2,
+                child: MaterialButton(
+                  padding: EdgeInsets.symmetric(vertical: 20, horizontal: 54),
+                  height: 70,
+                  minWidth: 220,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16)),
+                  onPressed: (() {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: ((context) => BMI(
+                                  bmiReslut: bmi(weight, height).toInt(),
+                                ))));
+                  }),
+                  color: allBoxClr,
+                  child: Text(
+                    "Calculator",
+                    style: TextStyle(color: textIconClr, fontSize: 26),
+                  ),
+                ))
           ],
         ),
       ),
     ));
+  }
+
+  bmi(int weight, int height) {
+    return weight / pow((height / 100), 2);
   }
 }
