@@ -8,14 +8,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  bool ismaleSelected = true;
+
   @override
   Widget build(BuildContext context) {
     Color allBoxClr = Color(0xff3949AB);
     Color textIconClr = Color(0xffC2BEBE);
     Color addMinusBOxBG = Color(0xffEFF3F3);
     Color selectClr = Color(0xff00227B);
-
-    bool ismaleSelected = true;
 
     return SafeArea(
         child: Scaffold(
@@ -53,7 +53,7 @@ class _HomePageState extends State<HomePage> {
                             width: 200,
                             decoration: BoxDecoration(
                                 color: ismaleSelected == true
-                                    ? Colors.teal
+                                    ? selectClr
                                     : allBoxClr,
                                 borderRadius: BorderRadius.circular(16)),
                             child: Row(
@@ -87,9 +87,8 @@ class _HomePageState extends State<HomePage> {
                         height: 100,
                         width: 200,
                         decoration: BoxDecoration(
-                            color: ismaleSelected == false
-                                ? Colors.teal
-                                : allBoxClr,
+                            color:
+                                ismaleSelected == false ? selectClr : allBoxClr,
                             borderRadius: BorderRadius.circular(16)),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
