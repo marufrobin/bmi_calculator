@@ -113,8 +113,145 @@ class _HomePageState extends State<HomePage> {
                 flex: 6,
                 child: Row(
                   children: [
-                    Expanded(child: Placeholder()),
-                    Expanded(child: Placeholder())
+                    Expanded(
+                        child: Container(
+                      padding: EdgeInsets.all(16),
+                      height: 238,
+                      width: 196,
+                      decoration: BoxDecoration(
+                          color: allBoxClr,
+                          borderRadius: BorderRadius.circular(16)),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Age (In Year)",
+                            style: TextStyle(fontSize: 20, color: textIconClr),
+                          ),
+                          SizedBox(
+                            height: 18,
+                          ),
+                          Center(
+                            child: Text(
+                              "18",
+                              style:
+                                  TextStyle(fontSize: 60, color: Colors.white),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 24,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              ElevatedButton(
+                                  onPressed: (() {}),
+                                  style: ButtonStyle(
+                                      backgroundColor:
+                                          MaterialStatePropertyAll<Color>(
+                                              Color(0xffEFF3F3)),
+                                      shape: MaterialStateProperty.all(
+                                          RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(16))),
+                                      padding: MaterialStateProperty.all(
+                                          EdgeInsets.all(18))),
+                                  child: Icon(
+                                    Icons.add,
+                                    color: allBoxClr,
+                                  )),
+                              ElevatedButton(
+                                  onPressed: (() {}),
+                                  style: ButtonStyle(
+                                      backgroundColor:
+                                          MaterialStatePropertyAll<Color>(
+                                              Color(0xffEFF3F3)),
+                                      shape: MaterialStateProperty.all(
+                                          RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(16))),
+                                      padding: MaterialStateProperty.all(
+                                          EdgeInsets.all(18))),
+                                  child: Icon(
+                                    Icons.remove,
+                                    color: allBoxClr,
+                                  ))
+                            ],
+                          )
+                        ],
+                      ),
+                    )),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.02,
+                    ),
+                    Expanded(
+                        child: Container(
+                      padding: EdgeInsets.all(16),
+                      height: 238,
+                      width: 196,
+                      decoration: BoxDecoration(
+                          color: allBoxClr,
+                          borderRadius: BorderRadius.circular(16)),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Weight (kg)",
+                            style: TextStyle(fontSize: 20, color: textIconClr),
+                          ),
+                          SizedBox(
+                            height: 18,
+                          ),
+                          Center(
+                            child: Text(
+                              "50",
+                              style:
+                                  TextStyle(fontSize: 60, color: Colors.white),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 24,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              ElevatedButton(
+                                  onPressed: (() {}),
+                                  style: ButtonStyle(
+                                      backgroundColor:
+                                          MaterialStatePropertyAll<Color>(
+                                              Color(0xffEFF3F3)),
+                                      shape: MaterialStateProperty.all(
+                                          RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(16))),
+                                      padding: MaterialStateProperty.all(
+                                          EdgeInsets.all(18))),
+                                  child: Icon(
+                                    Icons.add,
+                                    color: allBoxClr,
+                                  )),
+                              ElevatedButton(
+                                  onPressed: (() {}),
+                                  style: ButtonStyle(
+                                      backgroundColor:
+                                          MaterialStatePropertyAll<Color>(
+                                              Color(0xffEFF3F3)),
+                                      shape: MaterialStateProperty.all(
+                                          RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(16))),
+                                      padding: MaterialStateProperty.all(
+                                          EdgeInsets.all(18))),
+                                  child: Icon(
+                                    Icons.remove,
+                                    color: allBoxClr,
+                                  ))
+                            ],
+                          )
+                        ],
+                      ),
+                    )),
                   ],
                 )),
             Expanded(flex: 5, child: Placeholder()),
